@@ -1,7 +1,10 @@
 {
-  "name": "server",
+  "name": "biashara-server",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
+  "engines": {
+    "node": "6.11.1"
+  },
   "scripts": {
     "dev": "node ace serve --watch",
     "build": "node ace build --production",
