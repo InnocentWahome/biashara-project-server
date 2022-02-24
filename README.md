@@ -1,4 +1,4 @@
-# Project - (client & server)
+# Biashara Project - (client & server)
 
 > Biashara System
 
@@ -6,7 +6,7 @@
 
 ##### Clone the git repository
 ```
-git clone https://github.com/InnocentWahome/invoice-project.git
+git clone https://github.com/InnocentWahome/biashara-project-server.git
 ```
 
 ## Installation server
@@ -16,6 +16,7 @@ git clone https://github.com/InnocentWahome/invoice-project.git
 ```
 cp .env.example .env
 ```
+>Remember to use your database name and password instead
 ##### Install project dependencies
 ```
 npm install
@@ -36,10 +37,20 @@ npm run dev
 
 ## Installation client
 
+##### Clone the git repository
+```
+git clone https://github.com/InnocentWahome/biashara-project-client.git
+```
 ##### Install project dependencies
 ```
 npm install
 ```
+> Setup the environment variables
+
+
+>> GATSBY_AUTHENTICATION_BASE_URL=http://localhost:3333/api/v1/auth
+>> GATSBY_API_BASE_URL=http://localhost:3333/api/v1
+
 ##### Initialize development server
 ```
 npm run develop || gatsby develop
