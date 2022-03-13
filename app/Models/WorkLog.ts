@@ -10,22 +10,13 @@ export default class WorkLog extends BaseModel {
   public id: number
 
   @column()
-  public date: string
+  public date: Date
 
   @column()
   public day: string
 
-  // @column()
-  // public start: number
-
-  // @column()
-  // public stop: number
-
   @column()
   public userId: number
-
-  @column()
-  public userEmail: string
 
   @column()
   public description: string

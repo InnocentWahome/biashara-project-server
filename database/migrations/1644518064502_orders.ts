@@ -7,9 +7,7 @@ export default class Orders extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.string('product_id')
-      table.string('product_name')
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE')
-      table.string('user_email')
       table.integer('cost')
       table.integer('quantity')
       table.boolean('payment_status')

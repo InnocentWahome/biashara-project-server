@@ -12,13 +12,7 @@ export default class Order extends BaseModel {
   public productId: number
 
   @column()
-  public productName: string
-
-  @column()
   public userId: number
-
-  @column()
-  public userEmail: string
 
   @column()
   public cost: number

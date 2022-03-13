@@ -1,5 +1,7 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import Service from 'App/Models/Service'
+import { UserFactory } from './UserFactory'
+
 
 export const ServiceFactory = Factory.define(Service, ({ faker }) => {
   return {
@@ -10,9 +12,9 @@ export const ServiceFactory = Factory.define(Service, ({ faker }) => {
     ]),
     description: faker.commerce.productDescription(),
     userId: faker.datatype.number(),
-    userEmail: faker.internet.email(),
-    date:  faker.commerce.productDescription(),
+    date: faker.date.recent(),
     completed: faker.datatype.boolean()
 
   }
-}).build()
+}).relation('user', () => UserFactory)
+.build()

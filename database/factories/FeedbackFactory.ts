@@ -1,15 +1,13 @@
 import Factory from '@ioc:Adonis/Lucid/Factory'
 import Feedback from 'App/Models/Feedback'
-// import { UserFactory } from './UserFactory'
-// import  Product from 'App/Models/Product'
+import { UserFactory } from './UserFactory'
+import { ProductFactory } from './ProductFactory'
 
 export const FeedbackFactory = Factory.define(Feedback, ({ faker }) => {
   return {
     productId: faker.datatype.number(),
-    productName: faker.commerce.productName(),
+    date: faker.date.recent(),
     userId: faker.datatype.number(),
-    userEmail: faker.internet.email(),
-    date: faker.commerce.productDescription(),
     description: faker.commerce.productDescription(),
     rate: faker.datatype.number({
       'min': 1,
@@ -17,6 +15,6 @@ export const FeedbackFactory = Factory.define(Feedback, ({ faker }) => {
     }),
   }
 })
-// .relation('user', () => UserFactory)
-// .relation('product', () => Product)
+.relation('user', () => UserFactory)
+.relation('product', () => ProductFactory)
 .build()

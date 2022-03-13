@@ -2,9 +2,16 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Feedback from '../../Models/Feedback'
 
 export default class FeedbackController {
+    /**
+   * Retrieve all feedback records
+   *
+   * @param {HttpContextContract} {request, response, auth}
+   * @return {*}
+   * @memberof FeedbackController
+   */
   public async index({ response }: HttpContextContract) {
     try {
-      const feedbacks = await Feedback.query().select('*').from('feedbacks')
+      const feedbacks = await Feedback.query().preload('user').select('*').from('feedbacks')
       return response.json({
         success: true,
         message: 'Feedbacks retrieved successfully',

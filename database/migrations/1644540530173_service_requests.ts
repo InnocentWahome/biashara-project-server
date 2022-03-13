@@ -7,9 +7,8 @@ export default class ServiceRequests extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.string('description')
-      table.string('user_id')
-      table.string('user_email')
-      table.string('date')
+      table.integer('user_id').unsigned().notNullable().references('users.id').onDelete('CASCADE')
+      table.date('date')
       table.boolean('completed')
       table.enum('category', ['Software Update', 'Service Request', 'Maintenance']).defaultTo('Maintenance')
       table.timestamps(true)

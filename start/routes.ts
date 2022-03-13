@@ -29,15 +29,9 @@ Route.group(() => {
 }).prefix('/api/v1/auth')
 
 
-// courses routes
+// products routes
 Route.group(() => {
-  Route.group(() => {
-    Route.get('/', 'CoursesController.index')
-    Route.post('/', 'CoursesController.store')
-    Route.get('/:id', 'CoursesController.show')
-    Route.put('/:id', 'CoursesController.update')
-    Route.delete('/:id', 'CoursesController.delete')
-  }).prefix('/course')
+
 
   Route.group(() => {
     Route.get('/', 'ProductController.index')
@@ -46,6 +40,8 @@ Route.group(() => {
     Route.put('/:id', 'ProductController.update')
     Route.delete('/:id', 'ProductController.delete')
   }).prefix('/product')
+
+  // orders routes
 
   Route.group(() => {
     Route.get('/', 'OrderController.index')
@@ -56,6 +52,8 @@ Route.group(() => {
     Route.delete('/:id', 'OrderController.delete')
   }).prefix('/order')
 
+  // feedback routes
+
   Route.group(() => {
     Route.get('/', 'FeedbackController.index')
     Route.post('/', 'FeedbackController.store')
@@ -64,13 +62,7 @@ Route.group(() => {
     Route.delete('/:id', 'FeedbackController.delete')
   }).prefix('/feedback')
 
-  Route.group(() => {
-    Route.get('/', 'DeliveredProductController.index')
-    Route.post('/', 'DeliveredProductController.store')
-    Route.get('/:id', 'DeliveredProductController.show')
-    Route.put('/:id', 'DeliveredProductController.update')
-    Route.delete('/:id', 'DeliveredProductController.delete')
-  }).prefix('/delivered-products')
+  // maintenance routes
 
   Route.group(() => {
     Route.get('/', 'ServiceRequestController.index')
@@ -79,6 +71,9 @@ Route.group(() => {
     Route.put('/:id', 'ServiceRequestController.update')
     Route.delete('/:id', 'ServiceRequestController.delete')
   }).prefix('/service-request')
+
+  // performance routes
+
 
   Route.group(() => {
     Route.get('/', 'WorkLogController.index')

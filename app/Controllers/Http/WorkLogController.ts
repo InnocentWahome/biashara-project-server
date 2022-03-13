@@ -6,7 +6,7 @@ import User from 'App/Models/User'
 export default class WorkLogController {
   public async index({ response }: HttpContextContract) {
     try {
-      const worklog = await WorkLog.query().select('*').from('work_logs')
+      const worklog = await WorkLog.query().preload('user').select('*').from('work_logs')
       return response.json({
         success: true,
         message: 'WorkLogs retrieved successfully',
