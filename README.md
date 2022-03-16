@@ -1,12 +1,12 @@
-# Biashara Project - (client & server)
+# OFAMIS Project - (client & server)
 
-> Biashara System
+> OFAMIS System
 
 ## Installation 
 
 ##### Clone the git repository
 ```
-git clone https://github.com/InnocentWahome/biashara-project-server.git
+git clone https://github.com/InnocentWahome/ofamis-project-server.git
 ```
 
 ## Installation server
@@ -39,7 +39,7 @@ npm run dev
 
 ##### Clone the git repository
 ```
-git clone https://github.com/InnocentWahome/biashara-project-client.git
+git clone https://github.com/InnocentWahome/ofamis-project-client.git
 ```
 ##### Install project dependencies
 ```

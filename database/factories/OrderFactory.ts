@@ -7,7 +7,10 @@ export const OrderFactory = Factory.define(Order, ({ faker }) => {
     productId: faker.datatype.number(),
     userId: faker.datatype.number(),
     cost: faker.datatype.number(),
-    quantity: faker.datatype.number(),
+    quantity: faker.datatype.number({
+      'min': 0,
+      'max': 100,
+    }),
     paymentStatus: faker.datatype.boolean(),
     dispatchStatus: faker.datatype.boolean(), 
     deliveryStatus: faker.datatype.boolean()
