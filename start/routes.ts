@@ -25,7 +25,7 @@ Route.group(() => {
   Route.post('/login', 'AuthenticationController.login')
   Route.post('/register', 'AuthenticationController.register')
   Route.post('/forgot-password', 'AuthenticationController.forgotPassword')
-  Route.post('/set-password', 'AuthenticationController.resetPassword')
+  Route.post('/reset-password', 'AuthenticationController.resetPassword')
 }).prefix('/api/v1/auth')
 
 

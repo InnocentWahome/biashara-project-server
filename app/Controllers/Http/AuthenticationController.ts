@@ -203,7 +203,7 @@ export default class AuthenticationController {
    * @return {*}
    * @memberof AuthenticationController
    */
-  public async changePassword({ request, response, auth }: HttpContextContract) {
+  public async resetPassword({ request, response, auth }: HttpContextContract) {
     try {
       const setPasswordSchema = schema.create({
         password: schema.string(),
