@@ -5,6 +5,6 @@ export default class OrderSeeder extends BaseSeeder {
   public async run() {
     await OrderFactory 
     .with('user')
-    .createMany(10)
+    .createMany(5)
   }
 }

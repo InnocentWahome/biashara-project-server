@@ -5,6 +5,6 @@ export default class WorkLogSeeder extends BaseSeeder {
   public async run() {
     await WorkLogFactory
     .with('user')
-    .createMany(10)
+    .createMany(5)
   }
 }
