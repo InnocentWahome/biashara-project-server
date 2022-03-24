@@ -5,7 +5,6 @@ export default class FeedbackSeeder extends BaseSeeder {
   public async run() {
     await FeedbackFactory 
     .with('user')
-    .with('product')
     .createMany(10)
   }
 }
