@@ -8,6 +8,8 @@ export default class Orders extends BaseSchema {
       table.increments('id')
       table.string('product_id')
       table.integer('user_id').unsigned().references('id').inTable('users').onDelete('CASCADE')
+      table.string('product_name')
+      table.string('user_email')
       table.integer('cost')
       table.integer('quantity')
       table.boolean('payment_status')

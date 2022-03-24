@@ -21,6 +21,7 @@ Route.get('api/v1/health', async ({ response }) => {
 Route.group(() => {
   Route.get('/user', 'AuthenticationController.user')
   Route.get('/user/:id', 'AuthenticationController.show')
+  // Route.get('/users/:id', 'AuthenticationController.show')
   Route.get('/users', 'AuthenticationController.index')
   Route.post('/login', 'AuthenticationController.login')
   Route.post('/register', 'AuthenticationController.register')
@@ -51,6 +52,12 @@ Route.group(() => {
     Route.put('/:id', 'OrderController.update')
     Route.delete('/:id', 'OrderController.delete')
   }).prefix('/order')
+
+//user updating routes
+Route.group(() => {
+  Route.put('/:id', 'UserController.update')
+  Route.delete('/:id', 'UserController.delete')
+}).prefix('/user-change')
 
   // feedback routes
 

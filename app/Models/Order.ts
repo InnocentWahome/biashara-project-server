@@ -15,6 +15,12 @@ export default class Order extends BaseModel {
   public userId: number
 
   @column()
+  public productName: string
+
+  @column()
+  public userEmail: string
+
+  @column()
   public cost: number
 
   @column()

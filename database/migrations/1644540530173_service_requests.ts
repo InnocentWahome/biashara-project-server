@@ -8,6 +8,7 @@ export default class ServiceRequests extends BaseSchema {
       table.increments('id')
       table.string('description')
       table.integer('user_id').unsigned().notNullable().references('users.id').onDelete('CASCADE')
+      table.string('user_email')
       table.date('date')
       table.boolean('completed')
       table.enum('category', ['Software Update', 'Service Request', 'Maintenance']).defaultTo('Maintenance')

@@ -6,6 +6,8 @@ export const OrderFactory = Factory.define(Order, ({ faker }) => {
   return {
     productId: faker.datatype.number(),
     userId: faker.datatype.number(),
+    productName: faker.commerce.product(),
+    userEmail: faker.internet.email(),
     cost: faker.datatype.number(),
     quantity: faker.datatype.number({
       'min': 0,

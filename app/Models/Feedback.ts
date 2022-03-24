@@ -15,6 +15,12 @@ export default class Feedback extends BaseModel {
   public userId: number
 
   @column()
+  public productName: string
+
+  @column()
+  public userEmail: string
+
+  @column()
   public description: string
 
   @column()

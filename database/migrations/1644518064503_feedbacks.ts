@@ -8,6 +8,8 @@ export default class Feedback extends BaseSchema {
       table.increments('id')
       table.integer('product_id').unsigned().notNullable().references('products.id').onDelete('CASCADE')
       table.integer('user_id').unsigned().notNullable().references('users.id').onDelete('CASCADE')
+      table.string('product_name')
+      table.string('user_email')
       table.date('date')
       table.string('description')
       table.integer('rate')

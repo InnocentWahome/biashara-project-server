@@ -8,6 +8,7 @@ export const WorkLogFactory = Factory.define(WorkLog, ({ faker }) => {
     date: faker.date.recent(),
     day: faker.date.weekday(),
     userId: faker.datatype.number(),
+    userEmail: faker.internet.email(),
     description: faker.commerce.productDescription(),
     hours: faker.datatype.number({
         'min': 0,

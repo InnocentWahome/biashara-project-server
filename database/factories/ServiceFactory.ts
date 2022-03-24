@@ -11,6 +11,7 @@ export const ServiceFactory = Factory.define(Service, ({ faker }) => {
       'Maintenance'
     ]),
     description: faker.commerce.productDescription(),
+    userEmail: faker.internet.email(),
     userId: faker.datatype.number(),
     date: faker.date.recent(),
     completed: faker.datatype.boolean()
