@@ -1,4 +1,4 @@
-# OFAMIS Project - (client & server)
+# Server
 
 > OFAMIS System
 
