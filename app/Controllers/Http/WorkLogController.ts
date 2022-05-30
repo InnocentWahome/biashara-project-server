@@ -1,6 +1,6 @@
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import WorkLog from '../../Models/WorkLog'
-import User from 'App/Models/User'
+// import User from 'App/Models/User'
 
 
 export default class WorkLogController {
@@ -20,9 +20,9 @@ export default class WorkLogController {
       })
     }
   }
-  public async userWorkLog({  params, response }: HttpContextContract) {
+  public async userWorkLog({  response }: HttpContextContract) {
     try {
-      const user = await User.find(params.id)
+      // const user = await User.find(params.id)
       const workLogs = await WorkLog.query().select('*').from('work_logs').where("user_id", 86)
       return response.json({
         success: true,
