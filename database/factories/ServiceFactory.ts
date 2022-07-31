@@ -4,7 +4,8 @@ import { UserFactory } from './UserFactory'
 
 export const ServiceFactory = Factory.define(Service, ({ faker }) => {
   return {
-    category: faker.random.arrayElement(['Software Update', 'Service Request', 'Maintenance']),
+    // category: faker.random.arrayElement(['Software Update', 'Service Request', 'Maintenance']),
+    category: 'Software Update',
     description: faker.commerce.productDescription(),
     userEmail: faker.internet.email(),
     userId: faker.datatype.number(),

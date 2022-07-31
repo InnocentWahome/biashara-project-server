@@ -8,6 +8,7 @@ export const UserFactory = Factory.define(User, ({ faker }) => {
     email: faker.unique(faker.internet.email),
     phoneNumber: faker.unique(faker.phone.phoneNumber),
     password: faker.internet.password(),
-    role: faker.random.arrayElement(['User', 'Employee', 'Admin']),
+    // role: faker.random.arrayElement(['User', 'Employee', 'Admin']),
+    role: 'Employee',
   }
 }).build()
