@@ -6,10 +6,9 @@
  */
 
 import Env from '@ioc:Adonis/Core/Env'
-import { OrmConfig } from '@ioc:Adonis/Lucid/Orm'
 import { DatabaseConfig } from '@ioc:Adonis/Lucid/Database'
 
-const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
+const databaseConfig: DatabaseConfig = {
   /*
   |--------------------------------------------------------------------------
   | Connection
@@ -34,38 +33,37 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
     | npm i mysql
     |
     */
-    mysql: {
-      client: 'mysql2',
+    // mysql: {
+    //   client: 'mysql2',
+    //   connection: {
+    //     host: Env.get('MYSQL_HOST'),
+    //     port: Env.get('MYSQL_PORT'),
+    //     user: Env.get('MYSQL_USER'),
+    //     password: Env.get('MYSQL_PASSWORD', ''),
+    //     database: Env.get('MYSQL_DB_NAME'),
+    //   },
+    //   migrations: {
+    //     naturalSort: true,
+    //   },
+    //   healthCheck: false,
+    //   debug: false,
+    // },
+    pg: {
+      client: 'pg',
       connection: {
-        // host: Env.get('HOST'),
-        // port: Env.get('PORT'),
-        // user: Env.get('USER'),
-        // password: Env.get('PASSWORD', ''),
-        // database: Env.get('DB_NAME'),
-        host: 'localhost',
-        port: 3306,
-        user: 'wahome',
-        password: 'guruwalker',
-        database: 'ofamis',
+        host: Env.get('PG_HOST'),
+        port: Env.get('PG_PORT'),
+        user: Env.get('PG_USER'),
+        password: Env.get('PG_PASSWORD', ''),
+        database: Env.get('PG_DB_NAME'),
       },
-      healthCheck: false,
-      debug: false,
+      migrations: {
+        naturalSort: true,
+      },
+      healthCheck: true,
+      debug: true,
     },
   },
-
-  /*
-  |--------------------------------------------------------------------------
-  | ORM Configuration
-  |--------------------------------------------------------------------------
-  |
-  | Following are some of the configuration options to tweak the conventional
-  | settings of the ORM. For example:
-  |
-  | - Define a custom function to compute the default table name for a given model.
-  | - Or define a custom function to compute the primary key for a given model.
-  |
-  */
-  orm: {},
 }
 
 export default databaseConfig
