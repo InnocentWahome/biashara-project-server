@@ -2,7 +2,6 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import WorkLog from '../../Models/WorkLog'
 // import User from 'App/Models/User'
 
-
 export default class WorkLogController {
   public async index({ response }: HttpContextContract) {
     try {
@@ -20,10 +19,11 @@ export default class WorkLogController {
       })
     }
   }
-  public async userWorkLog({  response }: HttpContextContract) {
+  // filter worklogs by user_id
+  public async userWorkLog({ response }: HttpContextContract) {
     try {
       // const user = await User.find(params.id)
-      const workLogs = await WorkLog.query().select('*').from('work_logs').where("user_id", 86)
+      const workLogs = await WorkLog.query().select('*').from('work_logs').where('user_id', 86)
       return response.json({
         success: true,
         message: 'Single User WorkLogs retrieved successfully',
@@ -64,7 +64,15 @@ export default class WorkLogController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      const data = request.only(['user_id', 'user_email', 'description', 'hours', 'date', 'day', 'approval'])
+      const data = request.only([
+        'user_id',
+        'user_email',
+        'description',
+        'hours',
+        'date',
+        'day',
+        'approval',
+      ])
       const worklog = await WorkLog.create(data)
       return response.json({
         success: true,
@@ -90,7 +98,9 @@ export default class WorkLogController {
           data: null,
         })
       } else {
-        worklog.merge(request.only(['user_id', 'user_email', 'description', 'hours', 'date', 'approval']))
+        worklog.merge(
+          request.only(['user_id', 'user_email', 'description', 'hours', 'date', 'approval'])
+        )
         await worklog.save()
         return response.json({
           success: true,

@@ -2,7 +2,6 @@ import Route from '@ioc:Adonis/Core/Route'
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 
-
 Route.get('api/v1', ({ response }: HttpContextContract) => {
   return response.status(200).json({
     success: true,
@@ -14,7 +13,6 @@ Route.get('api/v1/health', async ({ response }) => {
 
   return report.healthy ? response.ok(report) : response.badRequest(report)
 })
-
 
 //auth routes
 Route.group(() => {
@@ -28,11 +26,8 @@ Route.group(() => {
   Route.post('/reset-password', 'AuthenticationController.resetPassword')
 }).prefix('/api/v1/auth')
 
-
 // products routes
 Route.group(() => {
-
-
   Route.group(() => {
     Route.get('/', 'ProductController.index')
     Route.post('/', 'ProductController.store')
@@ -52,11 +47,11 @@ Route.group(() => {
     Route.delete('/:id', 'OrderController.delete')
   }).prefix('/order')
 
-//user updating routes
-Route.group(() => {
-  Route.put('/:id', 'UserController.update')
-  Route.delete('/:id', 'UserController.delete')
-}).prefix('/user-change')
+  //user updating routes
+  Route.group(() => {
+    Route.put('/:id', 'UserController.update')
+    Route.delete('/:id', 'UserController.delete')
+  }).prefix('/user-change')
 
   // feedback routes
 
@@ -79,7 +74,6 @@ Route.group(() => {
   }).prefix('/service-request')
 
   // performance routes
-
 
   Route.group(() => {
     Route.get('/', 'WorkLogController.index')

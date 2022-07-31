@@ -2,7 +2,6 @@ import Factory from '@ioc:Adonis/Lucid/Factory'
 import WorkLog from 'App/Models/WorkLog'
 import { UserFactory } from './UserFactory'
 
-
 export const WorkLogFactory = Factory.define(WorkLog, ({ faker }) => {
   return {
     date: faker.date.recent(),
@@ -11,10 +10,11 @@ export const WorkLogFactory = Factory.define(WorkLog, ({ faker }) => {
     userEmail: faker.internet.email(),
     description: faker.commerce.productDescription(),
     hours: faker.datatype.number({
-        'min': 0,
-        'max': 12,
-      }),
-    approval: faker.datatype.boolean(), 
+      min: 0,
+      max: 12,
+    }),
+    approval: faker.datatype.boolean(),
   }
-}).relation('user', () => UserFactory)
-.build()
+})
+  .relation('user', () => UserFactory)
+  .build()

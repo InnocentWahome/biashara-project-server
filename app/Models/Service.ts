@@ -33,4 +33,3 @@ export default class ServiceRequest extends BaseModel {
   @belongsTo(() => User)
   public user: BelongsTo<typeof User>
 }
-

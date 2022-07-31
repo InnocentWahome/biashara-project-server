@@ -52,37 +52,37 @@ export default class AuthenticationController {
     }
   }
 
-/**
+  /**
    * Display a single user
    * GET /users/:id
    *
    * @param  {Object} { request, response }: HttpContextContract
    * @return {[type]}    [description]
    */
- public async show ({params, response}: HttpContextContract) {
-  try {
-    const user = await User.find(params.id)
-    if (!user) {
-      return response.status(404).json({
+  public async show({ params, response }: HttpContextContract) {
+    try {
+      const user = await User.find(params.id)
+      if (!user) {
+        return response.status(404).json({
+          success: false,
+          message: 'User not found',
+          data: null,
+        })
+      }
+      return response.status(200).json({
+        success: true,
+        message: 'Successfully retrieved the user',
+        data: user,
+      })
+    } catch (error) {
+      response.status(500).json({
         success: false,
-        message: 'User not found',
-        data: null,
+        message: error.message,
+        data: error,
       })
     }
-    return response.status(200).json({
-      success: true,
-      message: 'Successfully retrieved the user',
-      data: user,
-    })
-  } catch (error) {
-    response.status(500).json({
-      success: false,
-      message: error.message,
-      data: error,
-    })
   }
-}
-  
+
   /**
    * Authenticate an existing user
    *
@@ -101,7 +101,7 @@ export default class AuthenticationController {
       response.status(200).json({
         success: true,
         message: 'Successfully authenticated',
-        data: token
+        data: token,
       })
     } catch (error) {
       response.status(500).json({
@@ -236,7 +236,4 @@ export default class AuthenticationController {
       })
     }
   }
-
-
-
 }

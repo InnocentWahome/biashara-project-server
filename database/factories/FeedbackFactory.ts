@@ -12,11 +12,11 @@ export const FeedbackFactory = Factory.define(Feedback, ({ faker }) => {
     userEmail: faker.internet.email(),
     description: faker.commerce.productDescription(),
     rate: faker.datatype.number({
-      'min': 1,
-      'max': 5,
+      min: 1,
+      max: 5,
     }),
   }
 })
-.relation('user', () => UserFactory)
-.relation('product', () => ProductFactory)
-.build()
+  .relation('user', () => UserFactory)
+  .relation('product', () => ProductFactory)
+  .build()

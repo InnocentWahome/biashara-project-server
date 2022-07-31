@@ -49,9 +49,8 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
         database: 'ofamis',
       },
       healthCheck: false,
-			debug: false,
+      debug: false,
     },
-
   },
 
   /*
@@ -66,8 +65,7 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
   | - Or define a custom function to compute the primary key for a given model.
   |
   */
-  orm: {
-  },
+  orm: {},
 }
 
 export default databaseConfig

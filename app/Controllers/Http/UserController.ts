@@ -3,10 +3,8 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 import User from 'App/Models/User'
 
-
 export default class UserController {
-
-public async update({ params, request, response }: HttpContextContract) {
+  public async update({ params, request, response }: HttpContextContract) {
     try {
       const user = await User.findOrFail(params.id)
       if (!user) {
@@ -16,7 +14,16 @@ public async update({ params, request, response }: HttpContextContract) {
           data: null,
         })
       } else {
-        user.merge(request.only(['firstName', 'lastName', 'email', 'phoneNumber', 'phone_number', 'password']))
+        user.merge(
+          request.only([
+            'firstName',
+            'lastName',
+            'email',
+            'phoneNumber',
+            'phone_number',
+            'password',
+          ])
+        )
         await user.save()
         return response.json({
           success: true,
@@ -33,7 +40,6 @@ public async update({ params, request, response }: HttpContextContract) {
     }
   }
 
-  
   public async delete({ params, response }: HttpContextContract) {
     try {
       const user = await User.find(params.id)
