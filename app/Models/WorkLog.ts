@@ -2,10 +2,7 @@ import { DateTime } from 'luxon'
 import { BaseModel, column, belongsTo, BelongsTo } from '@ioc:Adonis/Lucid/Orm'
 import User from 'App/Models/User'
 
-
-
 export default class WorkLog extends BaseModel {
-
   @column({ isPrimary: true })
   public id: number
 

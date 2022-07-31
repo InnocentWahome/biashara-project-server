@@ -3,7 +3,7 @@ import BaseSchema from '@ioc:Adonis/Lucid/Schema'
 export default class WorkLogs extends BaseSchema {
   protected tableName = 'work_logs'
 
-  public async up () {
+  public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
       table.integer('user_id').unsigned().notNullable().references('users.id').onDelete('CASCADE')
@@ -17,8 +17,7 @@ export default class WorkLogs extends BaseSchema {
     })
   }
 
-  public async down () {
+  public async down() {
     this.schema.dropTable(this.tableName)
   }
 }
-

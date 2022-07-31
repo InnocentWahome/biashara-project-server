@@ -2,7 +2,7 @@ import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Feedback from '../../Models/Feedback'
 
 export default class FeedbackController {
-    /**
+  /**
    * Retrieve all feedback records
    *
    * @param {HttpContextContract} {request, response, auth}
@@ -53,7 +53,15 @@ export default class FeedbackController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      const data = request.only(['product_id', 'product_name', 'date', 'user_email', 'user_id', 'rate', 'description'])
+      const data = request.only([
+        'product_id',
+        'product_name',
+        'date',
+        'user_email',
+        'user_id',
+        'rate',
+        'description',
+      ])
       const feedback = await Feedback.create(data)
       return response.json({
         success: true,
@@ -79,7 +87,17 @@ export default class FeedbackController {
           data: null,
         })
       } else {
-        feedback.merge(request.only(['product_id', 'product_name', 'date', 'user_email', 'user_id', 'rate', 'description']))
+        feedback.merge(
+          request.only([
+            'product_id',
+            'product_name',
+            'date',
+            'user_email',
+            'user_id',
+            'rate',
+            'description',
+          ])
+        )
         await feedback.save()
         return response.json({
           success: true,
