@@ -34,14 +34,19 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
     | npm i mysql
     |
     */
-    pg: {
-      client: 'pg',
+    mysql: {
+      client: 'mysql2',
       connection: {
-        host: Env.get('HOST'),
-        port: Env.get('PORT'),
-        user: Env.get('USER'),
-        password: Env.get('PASSWORD', ''),
-        database: Env.get('DB_NAME'),
+        // host: Env.get('HOST'),
+        // port: Env.get('PORT'),
+        // user: Env.get('USER'),
+        // password: Env.get('PASSWORD', ''),
+        // database: Env.get('DB_NAME'),
+        host: 'localhost',
+        port: 3306,
+        user: 'wahome',
+        password: 'guruwalker',
+        database: 'ofamis',
       },
       healthCheck: false,
 			debug: false,

@@ -6,8 +6,7 @@ import HealthCheck from '@ioc:Adonis/Core/HealthCheck'
 Route.get('api/v1', ({ response }: HttpContextContract) => {
   return response.status(200).json({
     success: true,
-    message: 'Welcome to Project API',
-    data: null,
+    message: 'OFAMIS API running 🚀',
   })
 })
 Route.get('api/v1/health', async ({ response }) => {
