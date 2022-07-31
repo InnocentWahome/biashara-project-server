@@ -77,7 +77,7 @@ Route.group(() => {
 
   Route.group(() => {
     Route.get('/', 'WorkLogController.index')
-    Route.get('/user', 'WorkLogController.userWorkLog')
+    Route.get('/user/:id', 'WorkLogController.userWorkLog')
     Route.post('/', 'WorkLogController.store')
     Route.get('/:id', 'WorkLogController.show')
     Route.put('/:id', 'WorkLogController.update')
