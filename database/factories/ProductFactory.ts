@@ -7,6 +7,6 @@ export const ProductFactory = Factory.define(Product, ({ faker }) => {
     description: faker.commerce.productDescription(),
     quantity: faker.datatype.number(),
     price: faker.datatype.number(),
-    image: faker.random.image(),
+    image: faker.image.abstract(),
   }
 }).build()
