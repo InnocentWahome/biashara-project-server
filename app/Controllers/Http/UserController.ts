@@ -14,16 +14,7 @@ export default class UserController {
           data: null,
         })
       } else {
-        user.merge(
-          request.only([
-            'firstName',
-            'lastName',
-            'email',
-            'phoneNumber',
-            'phone_number',
-            'password',
-          ])
-        )
+        user.merge(request.all())
         await user.save()
         return response.json({
           success: true,

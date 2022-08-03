@@ -71,17 +71,7 @@ export default class OrderController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      const data = request.only([
-        'product_id',
-        'product_name',
-        'user_email',
-        'user_id',
-        'cost',
-        'quantity',
-        'dispatch_status',
-        'payment_status',
-        'delivery_status',
-      ])
+      const data = request.all()
       const order = await Order.create(data)
       return response.json({
         success: true,
@@ -107,19 +97,7 @@ export default class OrderController {
           data: null,
         })
       } else {
-        order.merge(
-          request.only([
-            'product_id',
-            'product_name',
-            'user_email',
-            'user_id',
-            'cost',
-            'quantity',
-            'dispatch_status',
-            'payment_status',
-            'delivery_status',
-          ])
-        )
+        order.merge(request.all())
 
         await order.save()
         return response.json({

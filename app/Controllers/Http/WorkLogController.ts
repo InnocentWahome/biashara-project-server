@@ -71,15 +71,7 @@ export default class WorkLogController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      const data = request.only([
-        'user_id',
-        'user_email',
-        'description',
-        'hours',
-        'date',
-        'day',
-        'approval',
-      ])
+      const data = request.all()
       const worklog = await WorkLog.create(data)
       return response.json({
         success: true,
@@ -105,9 +97,7 @@ export default class WorkLogController {
           data: null,
         })
       } else {
-        worklog.merge(
-          request.only(['user_id', 'user_email', 'description', 'hours', 'date', 'approval'])
-        )
+        worklog.merge(request.all())
         await worklog.save()
         return response.json({
           success: true,

@@ -46,7 +46,7 @@ export default class ProductController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      const data = request.only(['name', 'description', 'price', 'image', 'quantity'])
+      const data = request.all()
       const product = await Product.create(data)
       return response.json({
         success: true,
@@ -72,7 +72,7 @@ export default class ProductController {
           data: null,
         })
       } else {
-        product.merge(request.only(['name', 'description', 'price', 'image', 'quantity']))
+        product.merge(request.all())
         await product.save()
         return response.json({
           success: true,

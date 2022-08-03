@@ -53,15 +53,7 @@ export default class FeedbackController {
 
   public async store({ request, response }: HttpContextContract) {
     try {
-      const data = request.only([
-        'product_id',
-        'product_name',
-        'date',
-        'user_email',
-        'user_id',
-        'rate',
-        'description',
-      ])
+      const data = request.all()
       const feedback = await Feedback.create(data)
       return response.json({
         success: true,
@@ -87,17 +79,7 @@ export default class FeedbackController {
           data: null,
         })
       } else {
-        feedback.merge(
-          request.only([
-            'product_id',
-            'product_name',
-            'date',
-            'user_email',
-            'user_id',
-            'rate',
-            'description',
-          ])
-        )
+        feedback.merge(request.all())
         await feedback.save()
         return response.json({
           success: true,
