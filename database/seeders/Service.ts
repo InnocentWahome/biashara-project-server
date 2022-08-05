@@ -3,6 +3,6 @@ import { ServiceFactory } from 'Database/factories/ServiceFactory'
 
 export default class ServiceSeeder extends BaseSeeder {
   public async run() {
-    await ServiceFactory.with('user').createMany(5)
+    await ServiceFactory.with('user', 5).createMany(10)
   }
 }

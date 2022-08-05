@@ -16,9 +16,6 @@ export default class ServiceRequest extends BaseModel {
   public userId: number
 
   @column()
-  public userEmail: string
-
-  @column()
   public date: Date
 
   @column()

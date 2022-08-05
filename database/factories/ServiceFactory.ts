@@ -7,7 +7,6 @@ export const ServiceFactory = Factory.define(Service, ({ faker }) => {
     // category: faker.random.arrayElement(['Software Update', 'Service Request', 'Maintenance']),
     category: 'Software Update',
     description: faker.commerce.productDescription(),
-    userEmail: faker.internet.email(),
     userId: faker.datatype.number(),
     date: faker.date.recent(),
     completed: faker.datatype.boolean(),

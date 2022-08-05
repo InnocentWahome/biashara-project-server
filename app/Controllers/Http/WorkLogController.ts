@@ -5,11 +5,12 @@ import WorkLog from '../../Models/WorkLog'
 export default class WorkLogController {
   public async index({ response }: HttpContextContract) {
     try {
-      const worklog = await WorkLog.query()
-        .preload('user')
-        .whereHas('user', (query) => {
-          query.where('firstName', 'Sasha')
-        })
+      const worklog = await WorkLog.query().select('*').from('work_logs')
+      // .query()
+      // .preload('user')
+      // .whereHas('user', (query) => {
+      //   query.where('firstName', 'Sasha')
+      // })
       return response.json({
         success: true,
         message: 'WorkLogs retrieved successfully',
@@ -23,14 +24,19 @@ export default class WorkLogController {
       })
     }
   }
-  // filter worklogs by user_id
+
+  // get single user's worklog
   public async userWorkLog({ response, params }: HttpContextContract) {
     try {
       // const user = await User.find(params.id)
       const workLogs = await WorkLog.query()
         .select('*')
+        .preload('user')
         .from('work_logs')
-        .where('user_id', params.id)
+        // .where('user_id', params.id)
+        .whereHas('user', (query) => {
+          query.where('user_id', params.id)
+        })
       return response.json({
         success: true,
         message: 'Single User WorkLogs retrieved successfully',
@@ -44,6 +50,7 @@ export default class WorkLogController {
       })
     }
   }
+
   public async show({ params, response }: HttpContextContract) {
     try {
       const worklog = await WorkLog.find(params.id)

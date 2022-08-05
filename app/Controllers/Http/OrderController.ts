@@ -5,7 +5,7 @@ import Order from '../../Models/Order'
 export default class OrderController {
   public async index({ response }: HttpContextContract) {
     try {
-      const orders = await Order.query().select('*').from('orders')
+      const orders = await Order.query().select('*').from('orders').preload('user')
       return response.json({
         success: true,
         message: 'Orders retrieved successfully',
@@ -20,22 +20,23 @@ export default class OrderController {
     }
   }
 
-  public async userOrders({ params, response }: HttpContextContract) {
+  // get single user's orders
+  public async userOrder({ response, params }: HttpContextContract) {
     try {
-      const orders = await Order.find(params.user_id)
-      if (orders) {
-        return response.json({
-          success: true,
-          message: 'Users orders found',
-          data: orders,
+      // const user = await User.find(params.id)
+      const orders = await Order.query()
+        .select('*')
+        .preload('user')
+        .from('orders')
+        // .where('user_id', params.id)
+        .whereHas('user', (query) => {
+          query.where('user_id', params.id)
         })
-      } else {
-        return response.json({
-          success: true,
-          message: 'User does not have any orders',
-          data: null,
-        })
-      }
+      return response.json({
+        success: true,
+        message: 'Single User Orders retrieved successfully',
+        data: orders,
+      })
     } catch (error) {
       return response.json({
         success: false,

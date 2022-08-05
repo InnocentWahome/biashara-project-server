@@ -11,11 +11,39 @@ export default class FeedbackController {
    */
   public async index({ response }: HttpContextContract) {
     try {
-      const feedbacks = await Feedback.query().preload('user').select('*').from('feedbacks')
+      const feedbacks = await Feedback.query()
+        .preload('user')
+        .preload('product')
+        .select('*')
+        .from('feedbacks')
       return response.json({
         success: true,
         message: 'Feedbacks retrieved successfully',
         data: feedbacks,
+      })
+    } catch (error) {
+      return response.json({
+        success: false,
+        message: error.message,
+        data: error,
+      })
+    }
+  }
+
+  // get single product's feedback
+  public async productFeedback({ response, params }: HttpContextContract) {
+    try {
+      const feedback = await Feedback.query()
+        .select('*')
+        .preload('product')
+        .from('feedbacks')
+        .whereHas('product', (query) => {
+          query.where('product_id', params.id)
+        })
+      return response.json({
+        success: true,
+        message: 'Single User Orders retrieved successfully',
+        data: feedback,
       })
     } catch (error) {
       return response.json({

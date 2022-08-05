@@ -16,9 +16,6 @@ export default class WorkLog extends BaseModel {
   public userId: number
 
   @column()
-  public userEmail: string
-
-  @column()
   public description: string
 
   @column()

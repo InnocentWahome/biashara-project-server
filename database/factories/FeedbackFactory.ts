@@ -5,11 +5,9 @@ import { ProductFactory } from './ProductFactory'
 
 export const FeedbackFactory = Factory.define(Feedback, ({ faker }) => {
   return {
-    productId: faker.datatype.number(),
+    // product_id: faker.datatype.number(),
     date: faker.date.recent(),
-    userId: faker.datatype.number(),
-    productName: faker.commerce.product(),
-    userEmail: faker.internet.email(),
+    // userId: faker.datatype.number(),
     description: faker.commerce.productDescription(),
     rate: faker.datatype.number({
       min: 1,
